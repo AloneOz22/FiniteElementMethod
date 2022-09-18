@@ -4,20 +4,22 @@ mesh::mesh(std::string path) {
 	try {
 		std::ifstream file(path);
 		std::string helpString;
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			getline(file, helpString);
 		}
-		int nodesNum = stoi(helpString);
+		int nodesNum;
+		file >> nodesNum;
 		for (int i = 0; i < nodesNum; i++) {
 			int num;
 			double x, y, z;
 			file >> num >> x >> y >> z;
 			nodes.push_back(node(num, x, y, z));
 		}
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 3; i++) {
 			getline(file, helpString);
 		}
-		int elementsNum = stoi(helpString);
+		int elementsNum;
+		file >> elementsNum;
 		for (int i = 0; i < elementsNum; i++) {
 			int num, type, tag, firstNode, secondNode, thirdNode, fourthNode, helpInt;
 			file >> num >> type >> helpInt >> tag >> helpInt;
