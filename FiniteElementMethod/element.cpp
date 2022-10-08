@@ -1,69 +1,69 @@
 #include "element.h"
 
-element::element(node& firstNode, node& secondNode, node& thirdNode, node& fourthNode, int num, int type, int tag) {
-	this->firstNode = &firstNode;
-	this->secondNode = &secondNode;
-	this->thirdNode = &thirdNode;
-	this->fourthNode = &fourthNode;
+element::element(node& first_node, node& second_node, node& third_node, node& fourth_node, int num, int type, int tag) {
+	this->first_node = &first_node;
+	this->second_node = &second_node;
+	this->third_node = &third_node;
+	this->fourth_node = &fourth_node;
 	this->num = num;
 	this->type = type;
 	this->tag = tag;
 }
 
-element::element(node& firstNode, node& secondNode, node& thirdNode, int num, int type, int tag) {
-	this->firstNode = &firstNode;
-	this->secondNode = &secondNode;
-	this->thirdNode = &thirdNode;
-	this->fourthNode = nullptr;
+element::element(node& first_node, node& second_node, node& third_node, int num, int type, int tag) {
+	this->first_node = &first_node;
+	this->second_node = &second_node;
+	this->third_node = &third_node;
+	this->fourth_node = nullptr;
 	this->num = num;
 	this->type = type;
 	this->tag = tag;
 }
 
-element::element(node& firstNode, node& secondNode, int num, int type, int tag) {
-	this->firstNode = &firstNode;
-	this->secondNode = &secondNode;
-	this->thirdNode = nullptr;
-	this->fourthNode = nullptr;
+element::element(node& first_node, node& second_node, int num, int type, int tag) {
+	this->first_node = &first_node;
+	this->second_node = &second_node;
+	this->third_node = nullptr;
+	this->fourth_node = nullptr;
 	this->num = num;
 	this->type = type;
 	this->tag = tag;
 }
 
-element::element(node& firstNode, int num, int type, int tag) {
-	this->firstNode = &firstNode;
-	this->secondNode = nullptr;
-	this->thirdNode = nullptr;
-	this->fourthNode = nullptr;
+element::element(node& first_node, int num, int type, int tag) {
+	this->first_node = &first_node;
+	this->second_node = nullptr;
+	this->third_node = nullptr;
+	this->fourth_node = nullptr;
 	this->num = num;
 	this->type = type;
 	this->tag = tag;
 }
 
-node* element::getFirstNodePtr() {
-	return firstNode;
+node* element::get_first_node_ptr() {
+	return first_node;
 }
 
-node* element::getSecondNodePtr() {
-	return secondNode;
+node* element::get_second_node_ptr() {
+	return second_node;
 }
 
-node* element::getThirdNodePtr() {
-	return thirdNode;
+node* element::get_third_node_ptr() {
+	return third_node;
 }
 
-node* element::getFourthNodePtr() {
-	return fourthNode;
+node* element::get_fourth_node_ptr() {
+	return fourth_node;
 }
 
-int element::getNum() {
+int element::get_num() {
 	return num;
 }
 
-int element::getType() {
+int element::get_type() {
 	return type;
 }
 
-int element::getTag() {
+int element::get_tag() {
 	return tag;
 }

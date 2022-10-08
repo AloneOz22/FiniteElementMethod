@@ -3,14 +3,16 @@ class node
 {
 private:
 	int num;
-	long double x;
-	long double y;
-	long double z;
+	double x;
+	double y;
+	double z;
+	double value;
 public:
-	node(int num, long double x, long double y, long double z);
-	int getNum();
-	long double getX();
-	long double getY();
-	long double getZ();
+	node(int num, double x, double y, double z);
+	int get_num();
+	double get_x();
+	double get_y();
+	double get_z();
+	double get_value();
 };
 

@@ -14,9 +14,8 @@ private:
 	std::vector<element> elements;
 public:
 	mesh(std::string path);
-	node* getNodePtr(int num);
-	element* getElementPtr(int num);
-	//void loadMesh(std::string path);
-	void saveMesh(std::string path);
+	node* get_node_ptr(int num);
+	element* get_element_ptr(int num);
+	void save_mesh(std::string path);
 };
 

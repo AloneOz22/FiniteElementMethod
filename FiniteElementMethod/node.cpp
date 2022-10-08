@@ -1,24 +1,29 @@
 #include "node.h"
 
-node::node(int num, long double x, long double y, long double z) {
+node::node(int num, double x, double y, double z) {
 	this->num = num;
+	this->value = 100;
 	this->x = x;
 	this->y = y;
 	this->z = z;
 }
 
-int node::getNum() {
+int node::get_num() {
 	return num;
 }
 
-long double node::getX() {
+double node::get_x() {
 	return x;
 }
 
-long double node::getY() {
+double node::get_y() {
 	return y;
 }
 
-long double node::getZ() {
+double node::get_z() {
 	return z;
+}
+
+double node::get_value() {
+	return value;
 }

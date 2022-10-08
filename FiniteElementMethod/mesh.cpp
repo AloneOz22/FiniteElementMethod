@@ -51,15 +51,15 @@ mesh::mesh(std::string path) {
 	}
 }
 
-node* mesh::getNodePtr(int index) {
+node* mesh::get_node_ptr(int index) {
 	return &nodes[index];
 }
 
-element* mesh::getElementPtr(int index) {
+element* mesh::get_element_ptr(int index) {
 	return &elements[index];
 }
 
-void mesh::saveMesh(std::string path) {
+void mesh::save_mesh(std::string path) {
 	try {
 		std::ofstream file(path);
 		file << "$MeshFormat" << std::endl;
@@ -68,30 +68,32 @@ void mesh::saveMesh(std::string path) {
 		file << "$Nodes" << std::endl;
 		file << nodes.size() << std::endl;
 		for (int i = 0; i < nodes.size(); i++) {
-			file << nodes[i].getNum() << " " << nodes[i].getX() << " " << nodes[i].getY() << " " << nodes[i].getZ() << std::endl;
+			file << nodes[i].get_num() << " " << nodes[i].get_x() << " " << nodes[i].get_y() << " " << nodes[i].get_z() << std::endl;
 		}
 		file << "$EndNodes" << std::endl;
 		file << "$Elements" << std::endl;
 		file << elements.size() << std::endl;
 		for (int i = 0; i < elements.size(); i++) {
-			switch (elements[i].getType())
+			switch (elements[i].get_type())
 			{
 			case 15:
-				file << elements[i].getNum() << " " << elements[i].getType() << " " << 2 << " " << elements[i].getTag() << " " << elements[i].getTag() << " " <<
-					elements[i].getFirstNodePtr()->getNum() << std::endl;
+				file << elements[i].get_num() << " " << elements[i].get_type() << " " << 2 << " " << elements[i].get_tag() << " " << 
+					elements[i].get_tag() << " " << elements[i].get_first_node_ptr()->get_num() << std::endl;
 				break;
 			case 1:
-				file << elements[i].getNum() << " " << elements[i].getType() << " " << 2 << " " << elements[i].getTag() << " " << elements[i].getTag() << " " <<
-					elements[i].getFirstNodePtr()->getNum() << " " << elements[i].getSecondNodePtr()->getNum() << std::endl;
+				file << elements[i].get_num() << " " << elements[i].get_type() << " " << 2 << " " << elements[i].get_tag() << " " <<
+					elements[i].get_tag() << " " << elements[i].get_first_node_ptr()->get_num() << " " << elements[i].get_second_node_ptr()->get_num() << 
+					std::endl;
 				break;
 			case 2:
-				file << elements[i].getNum() << " " << elements[i].getType() << " " << 2 << " " << elements[i].getTag() << " " << elements[i].getTag() << " " <<
-					elements[i].getFirstNodePtr()->getNum() << " " << elements[i].getSecondNodePtr()->getNum() << " " << elements[i].getThirdNodePtr()->getNum() << std::endl;
+				file << elements[i].get_num() << " " << elements[i].get_type() << " " << 2 << " " << elements[i].get_tag() << " " <<
+					elements[i].get_tag() << " " << elements[i].get_first_node_ptr()->get_num() << " " << elements[i].get_second_node_ptr()->get_num() <<
+					" " << elements[i].get_third_node_ptr()->get_num() << std::endl;
 				break;
 			case 4:
-				file << elements[i].getNum() << " " << elements[i].getType() << " " << 2 << " " << elements[i].getTag() << " " << elements[i].getTag() << " " <<
-					elements[i].getFirstNodePtr()->getNum() << " " << elements[i].getSecondNodePtr()->getNum() << " " << elements[i].getThirdNodePtr()->getNum() << " " <<
-					elements[i].getFourthNodePtr()->getNum() << std::endl;
+				file << elements[i].get_num() << " " << elements[i].get_type() << " " << 2 << " " << elements[i].get_tag() << " " <<
+					elements[i].get_tag() << " " << elements[i].get_first_node_ptr()->get_num() << " " << elements[i].get_second_node_ptr()->get_num() << 
+					" " << elements[i].get_third_node_ptr()->get_num() << " " << elements[i].get_fourth_node_ptr()->get_num() << std::endl;
 				break;
 			default:
 				file << "There is something wrong..." << std::endl;

@@ -4,25 +4,25 @@
 class element
 {
 private:
-	node* firstNode;
-	node* secondNode;
-	node* thirdNode;
-	node* fourthNode;
+	node* first_node;
+	node* second_node;
+	node* third_node;
+	node* fourth_node;
 	int num;
 	int type;
 	int tag;
 public:
-	element(node& firstNode, node& secondNode, node& thirdNode, node& fourthNode, int num, int type, int tag);
-	element(node& firstNode, node& secondNode, node& thirdNode, int num, int type, int tag);
-	element(node& firstNode, node& secondNode, int num, int type, int tag);
-	element(node& firstNode, int num, int type, int tag);
-	node* getFirstNodePtr();
-	node* getSecondNodePtr();
-	node* getThirdNodePtr();
-	node* getFourthNodePtr();
-	int getNum();
-	int getType();
-	int getTag();
+	element(node& first_node, node& second_node, node& third_node, node& fourth_node, int num, int type, int tag);
+	element(node& first_node, node& second_node, node& third_node, int num, int type, int tag);
+	element(node& first_node, node& second_node, int num, int type, int tag);
+	element(node& first_node, int num, int type, int tag);
+	node* get_first_node_ptr();
+	node* get_second_node_ptr();
+	node* get_third_node_ptr();
+	node* get_fourth_node_ptr();
+	int get_num();
+	int get_type();
+	int get_tag();
 };
 
 
