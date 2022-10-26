@@ -1,22 +1,15 @@
 #include "mesh.h"
 #include "matrix.h"
+#include "finite_element_method.h"
 #include <iostream>
 
 int main() {
-	std::vector<std::vector<double>> vv = std::vector<std::vector<double>>(3);
-	for (int i = 0; i < 3; i++) {
-		vv[i] = std::vector<double>(3);
-		for (int j = 0; j < 3; j++) {
-			vv[i][j] = (i + 1) * 10 + (j + 1);
-		}
-	}
-	std::vector<double> v{ 2, 7, 8 };
-	matrix m(3, vv);
-	m.print_transposed();
-	std::vector<double> result = m * v;
-	for (int i = 0; i < 3; i++) {
-		std::cout << result[i] << " ";
-	}
+	node first(1, 0, 0, 0);
+	node second(2, 1, 0, 0);
+	node third(3, 0, 1, 0);
+	node fourth(4, 0, 0, 1);
+	element tetrahedron(first, second, third, fourth, 1, 4, 0);
+	std::cout << finite_element_method::element_characteristic(tetrahedron);
 	return 0;
 
 }

@@ -36,13 +36,16 @@ public:
 	matrix operator *(int val);
 	matrix operator *(double val);
 	
-	matrix zero(int dim);
-	matrix one(int dim);
+	static matrix zero(int dim);
+	static matrix one(int dim);
 	matrix inverse();
 	matrix transposition();
 
 	double determinant();
 	void print_transposed();
-
+	void set_value(int i, int j, double value);
+	double get_value(int i, int j);
+	std::vector<double> get_vector(int i);
+	void set_vector(int i, std::vector<double> col);
 };
 

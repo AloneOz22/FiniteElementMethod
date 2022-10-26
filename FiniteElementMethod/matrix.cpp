@@ -333,3 +333,23 @@ void matrix::print_transposed() {
 	}
 }
 
+void matrix::set_value(int i, int j, double value) {
+	try {
+		this->values[i][j] = value;
+	}
+	catch (std::exception e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
+double matrix::get_value(int i, int j) {
+	return this->values[i][j];
+}
+
+void matrix::set_vector(int i, std::vector<double> col) {
+	this->values[i] = col;
+}
+
+std::vector<double> matrix::get_vector(int i) {
+	return this->values[i];
+}
