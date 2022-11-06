@@ -1,11 +1,13 @@
 #include "triplet.h"
 
 triplet::triplet(int i, int j, double value) {
-	this->i = i;
-	this->j = j;
+	this->i = j;
+	this->j = i;
 	this->value = value;
 }
 
-void triplet::add_to_triplet(triplet*& point, double value) {
-	point->value += value;
+triplet::triplet() {
+	this->i = 0;
+	this->j = 0;
+	this->value = 0;
 }

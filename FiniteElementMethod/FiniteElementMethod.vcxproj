@@ -26,6 +26,7 @@
     <ClInclude Include="node.h" />
     <ClInclude Include="sparse_matrix.h" />
     <ClInclude Include="triplet.h" />
+    <ClInclude Include="triplet_array.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="element.cpp" />
@@ -36,6 +37,7 @@
     <ClCompile Include="node.cpp" />
     <ClCompile Include="sparse_matrix.cpp" />
     <ClCompile Include="triplet.cpp" />
+    <ClCompile Include="triplet_array.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
