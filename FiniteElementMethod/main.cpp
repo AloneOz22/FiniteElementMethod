@@ -5,24 +5,14 @@
 #include <iostream>
 
 int main() {
-	/*node first(1, 0, 0, 0);
-	node second(2, 1, 0, 0);
-	node third(3, 0, 1, 0);
-	node fourth(4, 0, 0, 1);
-	element tetrahedron(first, second, third, fourth, 1, 4, 0);
-	std::cout << finite_element_method::element_characteristic(tetrahedron);*/
-	std::vector<triplet> arr = std::vector<triplet>();
-	arr.push_back(triplet(0, 3, 5));
-	arr.push_back(triplet(1, 0, 3));
-	arr.push_back(triplet(1, 2, 1));
-	arr.push_back(triplet(2, 2, 7));
-	arr.push_back(triplet(3, 0, 2));
-	std::vector<double> right_part{ 4, 2, 7, 5};
-	triplet_array triplets = triplet_array(arr);
-	sparse_matrix A = sparse_matrix(triplets);
-	std::vector<double> result = A * right_part;
-	for (int i = 0; i < result.size(); i++) {
-		std::cout << result[i] << std::endl;
+	mesh msh("Example.msh");
+	sparse_matrix global = finite_element_method::global_matrix(msh);
+	for (auto elem : msh.elements) {
+		if (elem.get_type() == 4) {
+			matrix coef = finite_element_method::local_c_matrix(elem);
+			coef.print_transposed();
+			std::cout << std::endl;
+		}
 	}
 	return 0;
 

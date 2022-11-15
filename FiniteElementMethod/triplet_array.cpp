@@ -27,7 +27,7 @@ void triplet_array::sort_by_i() {
 
 void triplet_array::shrink() {
 	for (int i = 0; i < arr.size() - 1; i++) {
-		for (int j = i; j < arr.size(); j++) {
+		for (int j = i + 1; j < arr.size(); j++) {
 			if (arr[i].i == arr[j].i && arr[i].j == arr[j].j) {
 				arr[i].value += arr[j].value;
 				arr[j].i = -1;

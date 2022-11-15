@@ -1,5 +1,6 @@
 #pragma once
 #include "node.h"
+#include <vector>
 
 class element
 {
@@ -8,10 +9,13 @@ private:
 	node* second_node;
 	node* third_node;
 	node* fourth_node;
+
 	int num;
 	int type;
 	int tag;
 public:
+	std::vector<node*> node_list;
+
 	element(node& first_node, node& second_node, node& third_node, node& fourth_node, int num, int type, int tag);
 	element(node& first_node, node& second_node, node& third_node, int num, int type, int tag);
 	element(node& first_node, node& second_node, int num, int type, int tag);

@@ -10,7 +10,7 @@ const double EPS = 0.0000000001;
 
 class matrix
 {
-private:
+public:
 
 	int cols;
 	int rows;

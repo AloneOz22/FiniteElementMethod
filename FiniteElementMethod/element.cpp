@@ -8,6 +8,8 @@ element::element(node& first_node, node& second_node, node& third_node, node& fo
 	this->num = num;
 	this->type = type;
 	this->tag = tag;
+
+	this->node_list = std::vector<node*>{ &first_node, &second_node, &third_node, &fourth_node };
 }
 
 element::element(node& first_node, node& second_node, node& third_node, int num, int type, int tag) {
@@ -18,6 +20,8 @@ element::element(node& first_node, node& second_node, node& third_node, int num,
 	this->num = num;
 	this->type = type;
 	this->tag = tag;
+
+	this->node_list = std::vector<node*>{ &first_node, &second_node, &third_node };
 }
 
 element::element(node& first_node, node& second_node, int num, int type, int tag) {
@@ -28,6 +32,8 @@ element::element(node& first_node, node& second_node, int num, int type, int tag
 	this->num = num;
 	this->type = type;
 	this->tag = tag;
+
+	this->node_list = std::vector<node*>{ &first_node, &second_node };
 }
 
 element::element(node& first_node, int num, int type, int tag) {
@@ -38,6 +44,8 @@ element::element(node& first_node, int num, int type, int tag) {
 	this->num = num;
 	this->type = type;
 	this->tag = tag;
+
+	this->node_list = std::vector<node*>{ &first_node };
 }
 
 node* element::get_first_node_ptr() {

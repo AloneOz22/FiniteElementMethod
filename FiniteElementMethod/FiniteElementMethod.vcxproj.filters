@@ -69,4 +69,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="mesh.msh">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="test.msh">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="Example.msh">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+  </ItemGroup>
 </Project>

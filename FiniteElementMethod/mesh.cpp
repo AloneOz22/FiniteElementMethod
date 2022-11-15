@@ -4,9 +4,9 @@ mesh::mesh(std::string path) {
 	try {
 		std::ifstream file(path);
 		std::string helpString;
-		for (int i = 0; i < 4; i++) {
+		do {
 			getline(file, helpString);
-		}
+		} while (helpString != "$Nodes");
 		int nodesNum;
 		file >> nodesNum;
 		for (int i = 0; i < nodesNum; i++) {
@@ -41,7 +41,7 @@ mesh::mesh(std::string path) {
 				elements.push_back(element(nodes[firstNode - 1], nodes[secondNode - 1], nodes[thirdNode - 1], nodes[fourthNode - 1], num, 4, tag));
 				break;
 			default:
-				std::cout << "Something is going wrong..." << std::endl;
+				std::cout << "Something in mesh loading is going wrong..." << std::endl;
 				break;
 			}
 		}

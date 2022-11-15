@@ -39,6 +39,11 @@
     <ClCompile Include="triplet.cpp" />
     <ClCompile Include="triplet_array.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Example.msh" />
+    <None Include="mesh.msh" />
+    <None Include="test.msh" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
