@@ -24,24 +24,29 @@ mesh::mesh(std::string path) {
 			int num, type, tag, firstNode, secondNode, thirdNode, fourthNode, helpInt;
 			file >> num >> type >> helpInt >> tag >> helpInt;
 			switch (type) {
-			case 15:
+			/*case 15:
 				file >> firstNode;
 				elements.push_back(element(nodes[firstNode - 1], num, 15, tag));
 				break;
 			case 1:
 				file >> firstNode >> secondNode;
 				elements.push_back(element(nodes[firstNode - 1], nodes[secondNode - 1], num, 1, tag));
-				break;
+				break;*/
 			case 2:
+				num = i;
 				file >> firstNode >> secondNode >> thirdNode;
-				elements.push_back(element(nodes[firstNode - 1], nodes[secondNode - 1], nodes[thirdNode - 1], num, 2, tag));
+				//elements.push_back(element(nodes[firstNode - 1], nodes[secondNode - 1], nodes[thirdNode - 1], num, 2, tag));
+				triangles.push_back(element(nodes[firstNode - 1], nodes[secondNode - 1], nodes[thirdNode - 1], num, 2, tag));
 				break;
 			case 4:
+				num = i;
 				file >> firstNode >> secondNode >> thirdNode >> fourthNode;
 				elements.push_back(element(nodes[firstNode - 1], nodes[secondNode - 1], nodes[thirdNode - 1], nodes[fourthNode - 1], num, 4, tag));
+				//tetrahedrons.push_back(elements.back());
 				break;
 			default:
 				std::cout << "Something in mesh loading is going wrong..." << std::endl;
+				getline(file, helpString);
 				break;
 			}
 		}

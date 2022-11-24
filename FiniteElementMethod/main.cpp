@@ -5,14 +5,11 @@
 #include <iostream>
 
 int main() {
-	mesh msh("Example.msh");
+	mesh msh = mesh("example.msh");
 	sparse_matrix global = finite_element_method::global_matrix(msh);
-	for (auto elem : msh.elements) {
-		if (elem.get_type() == 4) {
-			matrix coef = finite_element_method::local_c_matrix(elem);
-			coef.print_transposed();
-			std::cout << std::endl;
-		}
+	std::vector<double> right_part = finite_element_method::right_part(msh, global);
+	for (auto val : right_part) {
+		std::cout << val << std::endl;
 	}
 	return 0;
 

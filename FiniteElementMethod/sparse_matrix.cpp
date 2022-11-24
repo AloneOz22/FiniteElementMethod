@@ -42,6 +42,42 @@ sparse_matrix::sparse_matrix(triplet_array& triplets) {
 	}
 }
 
+double sparse_matrix::get_value(int i, int j) {
+	double result = 0;
+	if (i != 0) {
+		for (int j_ptr = i_pointer[i - 1]; j_ptr < i_pointer[i]; j_ptr++) {
+			if (j_pointer[j_ptr] == j) {
+				result = this->values[j_ptr];
+			}
+		}
+	}
+	else {
+		for (int j_ptr = 0; j_ptr < i_pointer[i]; j_ptr++) {
+			if (j_pointer[j_ptr] == j) {
+				result = this->values[j_ptr];
+			}
+		}
+	}
+	return result;
+}
+
+void sparse_matrix::set_value(int i, int j, double value) {
+	if (i != 0) {
+		for (int j_ptr = i_pointer[i - 1]; j_ptr < i_pointer[i]; j_ptr++) {
+			if (j_pointer[j_ptr] == j) {
+				this->values[j_ptr] = value;
+			}
+		}
+	}
+	else {
+		for (int j_ptr = 0; j_ptr < i_pointer[i]; j_ptr++) {
+			if (j_pointer[j_ptr] == j) {
+				this->values[j_ptr] = value;
+			}
+		}
+	}
+}
+
 std::vector<double> sparse_matrix::operator *(std::vector<double>& right_part) {
 	std::vector<double> result = std::vector<double>(i_pointer.size());
 	result[0] = 0;

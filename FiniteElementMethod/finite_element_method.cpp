@@ -226,6 +226,46 @@ sparse_matrix finite_element_method::global_matrix(mesh& msh) {
 	}
 }
 
-//std::vector<double> finite_element_method::right_part(mesh& msh, sparse_matrix& global) {
-//	
-//}
+std::vector<double> finite_element_method::right_part(mesh& msh, sparse_matrix& global) {
+	try {
+		std::vector<double> result = std::vector<double>(msh.nodes.size());
+		for (auto val : result) {
+			val = 0;
+		}
+		for (int i = 0; i < msh.triangles.size(); i++) {
+			result[msh.triangles[i].get_first_node_ptr()->get_num() - 1] = 1;
+			result[msh.triangles[i].get_second_node_ptr()->get_num() - 1] = 1;
+			result[msh.triangles[i].get_third_node_ptr()->get_num() - 1] = 1;
+		}
+		for (int i = 0; i < result.size(); i++) {
+			if (result[i] == 1) {
+				result[i] = global.get_value(i, i);
+				if (i != 0) {
+					for (int j = global.i_pointer[i - 1]; j < global.i_pointer[i]; j++) {
+						global.values[j] = 0;
+					}
+					global.set_value(i, i, 1);
+					/*global.values.erase(global.values.begin() + global.i_pointer[i - 1], global.values.begin() + global.i_pointer[i]);
+					global.values.insert(global.values.begin() + global.i_pointer[i - 1], 1);
+					global.j_pointer.erase(global.j_pointer.begin() + global.i_pointer[i - 1], global.j_pointer.begin() + global.i_pointer[i]);
+					global.j_pointer.insert(global.j_pointer.begin() + global.i_pointer[i - 1], i);*/
+				}
+				else {
+					for (int j = 0; j < global.i_pointer[i]; j++) {
+						global.values[j] = 0;
+					}
+					global.set_value(i, i, 1);
+					/*global.values.erase(global.values.begin(), global.values.begin() + global.i_pointer[i]);
+					global.values.insert(global.values.begin(), 1);
+					global.j_pointer.erase(global.j_pointer.begin(), global.j_pointer.begin() + global.i_pointer[i]);
+					global.j_pointer.insert(global.j_pointer.begin(), i);*/
+				}
+			}
+		}
+		return result;
+	}
+	catch (std::exception e) {
+		std::cout << e.what() << std::endl;
+		return std::vector<double>{};
+	}
+}

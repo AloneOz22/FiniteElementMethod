@@ -10,6 +10,8 @@ public:
 	sparse_matrix();
 	sparse_matrix(std::vector<double>& values, std::vector<int>& i_pointer, std::vector<int>& j_pointer);
 	sparse_matrix(triplet_array& arr);
+	double get_value(int i, int j);
+	void set_value(int i, int j, double value);
 	std::vector<double> operator *(std::vector<double>& right_part);
 };
 
