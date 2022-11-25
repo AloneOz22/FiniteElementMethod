@@ -13,60 +13,114 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Сетка">
+      <UniqueIdentifier>{b30e040d-e2f7-4dea-931c-28e10bc2167d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Разреженная матрица">
+      <UniqueIdentifier>{2ba1057d-35b1-4454-beea-f9a4a0bdf6da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Сетка">
+      <UniqueIdentifier>{9747e19e-0151-4a19-99d7-3da35aad3483}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Разреженная матрица">
+      <UniqueIdentifier>{ed0420f7-1ab2-4c23-b127-1ee934fa0f0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Алгебра">
+      <UniqueIdentifier>{b4f984f9-fb65-4d93-9cde-a61743fe69bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Алгебра">
+      <UniqueIdentifier>{56e92447-ce19-4941-b52e-18362c8aaa74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Прямые методы">
+      <UniqueIdentifier>{96825727-fcb2-4c42-bfda-02c2b641320c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Прямые методы">
+      <UniqueIdentifier>{e13267cf-c9e1-4f12-a139-8f27b702566c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Ортогональные преобразования">
+      <UniqueIdentifier>{db28d442-2a6e-4e77-80a9-7cc65687fbe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Ортогональные преобразования">
+      <UniqueIdentifier>{d5a9c695-afe8-44bf-b02f-6919bd0b90f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="node.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="mesh.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="element.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="matrix.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="finite_element_method.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="sparse_matrix.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Разреженная матрица</Filter>
     </ClInclude>
     <ClInclude Include="triplet.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Разреженная матрица</Filter>
     </ClInclude>
     <ClInclude Include="triplet_array.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Разреженная матрица</Filter>
+    </ClInclude>
+    <ClInclude Include="element.h">
+      <Filter>Файлы заголовков\Сетка</Filter>
+    </ClInclude>
+    <ClInclude Include="mesh.h">
+      <Filter>Файлы заголовков\Сетка</Filter>
+    </ClInclude>
+    <ClInclude Include="node.h">
+      <Filter>Файлы заголовков\Сетка</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix.h">
+      <Filter>Файлы заголовков\Алгебра</Filter>
+    </ClInclude>
+    <ClInclude Include="gauss_method.h">
+      <Filter>Файлы заголовков\Прямые методы</Filter>
+    </ClInclude>
+    <ClInclude Include="vector_for_algebra.h">
+      <Filter>Файлы заголовков\Алгебра</Filter>
+    </ClInclude>
+    <ClInclude Include="sparse_matrix_2.h">
+      <Filter>Файлы заголовков\Разреженная матрица</Filter>
+    </ClInclude>
+    <ClInclude Include="BCG.h">
+      <Filter>Файлы заголовков\Алгебра</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mesh.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="element.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="node.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="matrix.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="finite_element_method.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="sparse_matrix.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="element.cpp">
+      <Filter>Исходные файлы\Сетка</Filter>
+    </ClCompile>
+    <ClCompile Include="mesh.cpp">
+      <Filter>Исходные файлы\Сетка</Filter>
+    </ClCompile>
+    <ClCompile Include="node.cpp">
+      <Filter>Исходные файлы\Сетка</Filter>
     </ClCompile>
     <ClCompile Include="triplet.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Разреженная матрица</Filter>
     </ClCompile>
     <ClCompile Include="triplet_array.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Разреженная матрица</Filter>
+    </ClCompile>
+    <ClCompile Include="sparse_matrix.cpp">
+      <Filter>Исходные файлы\Разреженная матрица</Filter>
+    </ClCompile>
+    <ClCompile Include="matrix.cpp">
+      <Filter>Исходные файлы\Алгебра</Filter>
+    </ClCompile>
+    <ClCompile Include="gauss_method.cpp">
+      <Filter>Исходные файлы\Прямые методы</Filter>
+    </ClCompile>
+    <ClCompile Include="vector_for_algebra.cpp">
+      <Filter>Исходные файлы\Алгебра</Filter>
+    </ClCompile>
+    <ClCompile Include="sparse_matrix_2.cpp">
+      <Filter>Исходные файлы\Разреженная матрица</Filter>
+    </ClCompile>
+    <ClCompile Include="BCG.cpp">
+      <Filter>Исходные файлы\Алгебра</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

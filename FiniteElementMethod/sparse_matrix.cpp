@@ -78,6 +78,26 @@ void sparse_matrix::set_value(int i, int j, double value) {
 	}
 }
 
+sparse_matrix sparse_matrix::transpose() {
+	std::vector<triplet> triplets = {};
+	for (int j = 0; j < i_pointer[0]; j++) {
+		triplets.push_back(triplet(0, j_pointer[j], values[j]));
+	}
+	for (int i = 1; i < i_pointer.size(); i++) {
+		for (int j = i_pointer[i - 1]; j < i_pointer[i]; j++) {
+			triplets.push_back(triplet(i, j_pointer[j], values[j]));
+		}
+	}
+	for (auto trip : triplets) {
+		int changer = trip.i;
+		trip.i = trip.j;
+		trip.j = changer;
+	}
+	triplet_array arr = triplet_array(triplets);
+	sparse_matrix result = sparse_matrix(arr);
+	return result;
+}
+
 std::vector<double> sparse_matrix::operator *(std::vector<double>& right_part) {
 	std::vector<double> result = std::vector<double>(i_pointer.size());
 	result[0] = 0;

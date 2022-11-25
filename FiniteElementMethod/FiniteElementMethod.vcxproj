@@ -19,25 +19,33 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BCG.h" />
     <ClInclude Include="element.h" />
     <ClInclude Include="finite_element_method.h" />
+    <ClInclude Include="gauss_method.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="sparse_matrix.h" />
+    <ClInclude Include="sparse_matrix_2.h" />
     <ClInclude Include="triplet.h" />
     <ClInclude Include="triplet_array.h" />
+    <ClInclude Include="vector_for_algebra.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BCG.cpp" />
     <ClCompile Include="element.cpp" />
     <ClCompile Include="finite_element_method.cpp" />
+    <ClCompile Include="gauss_method.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="sparse_matrix.cpp" />
+    <ClCompile Include="sparse_matrix_2.cpp" />
     <ClCompile Include="triplet.cpp" />
     <ClCompile Include="triplet_array.cpp" />
+    <ClCompile Include="vector_for_algebra.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Example.msh" />

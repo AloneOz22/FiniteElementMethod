@@ -12,6 +12,7 @@ public:
 	sparse_matrix(triplet_array& arr);
 	double get_value(int i, int j);
 	void set_value(int i, int j, double value);
+	sparse_matrix transpose();
 	std::vector<double> operator *(std::vector<double>& right_part);
 };
 
