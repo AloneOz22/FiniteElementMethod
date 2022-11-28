@@ -22,7 +22,6 @@
     <ClInclude Include="BCG.h" />
     <ClInclude Include="element.h" />
     <ClInclude Include="finite_element_method.h" />
-    <ClInclude Include="gauss_method.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="node.h" />
@@ -36,7 +35,6 @@
     <ClCompile Include="BCG.cpp" />
     <ClCompile Include="element.cpp" />
     <ClCompile Include="finite_element_method.cpp" />
-    <ClCompile Include="gauss_method.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="mesh.cpp" />

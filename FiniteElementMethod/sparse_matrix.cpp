@@ -12,10 +12,10 @@ sparse_matrix::sparse_matrix(std::vector<double>& values, std::vector<int>& i_po
 	this->j_pointer = j_pointer;
 }
 
-sparse_matrix::sparse_matrix(triplet_array& triplets) {
+sparse_matrix::sparse_matrix(triplet_array& triplets, int dim) {
 	j_pointer = std::vector<int>();
 	values = std::vector<double>();
-	i_pointer = std::vector<int>(triplets.max_i + 1);
+	i_pointer = std::vector<int>(dim + 1);
 
 	//Формируем i_pointer
 	for (int i = 0; i < i_pointer.size(); i++) {
@@ -94,7 +94,7 @@ sparse_matrix sparse_matrix::transpose() {
 		trip.j = changer;
 	}
 	triplet_array arr = triplet_array(triplets);
-	sparse_matrix result = sparse_matrix(arr);
+	sparse_matrix result = sparse_matrix(arr, this->i_pointer.size() - 1);
 	return result;
 }
 

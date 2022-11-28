@@ -31,18 +31,6 @@
     <Filter Include="Файлы заголовков\Алгебра">
       <UniqueIdentifier>{56e92447-ce19-4941-b52e-18362c8aaa74}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\Прямые методы">
-      <UniqueIdentifier>{96825727-fcb2-4c42-bfda-02c2b641320c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Прямые методы">
-      <UniqueIdentifier>{e13267cf-c9e1-4f12-a139-8f27b702566c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Ортогональные преобразования">
-      <UniqueIdentifier>{db28d442-2a6e-4e77-80a9-7cc65687fbe2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Ортогональные преобразования">
-      <UniqueIdentifier>{d5a9c695-afe8-44bf-b02f-6919bd0b90f3}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="finite_element_method.h">
@@ -69,9 +57,6 @@
     <ClInclude Include="matrix.h">
       <Filter>Файлы заголовков\Алгебра</Filter>
     </ClInclude>
-    <ClInclude Include="gauss_method.h">
-      <Filter>Файлы заголовков\Прямые методы</Filter>
-    </ClInclude>
     <ClInclude Include="vector_for_algebra.h">
       <Filter>Файлы заголовков\Алгебра</Filter>
     </ClInclude>
@@ -84,9 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="finite_element_method.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="element.cpp">
@@ -110,9 +92,6 @@
     <ClCompile Include="matrix.cpp">
       <Filter>Исходные файлы\Алгебра</Filter>
     </ClCompile>
-    <ClCompile Include="gauss_method.cpp">
-      <Filter>Исходные файлы\Прямые методы</Filter>
-    </ClCompile>
     <ClCompile Include="vector_for_algebra.cpp">
       <Filter>Исходные файлы\Алгебра</Filter>
     </ClCompile>
@@ -120,6 +99,9 @@
       <Filter>Исходные файлы\Разреженная матрица</Filter>
     </ClCompile>
     <ClCompile Include="BCG.cpp">
+      <Filter>Исходные файлы\Алгебра</Filter>
+    </ClCompile>
+    <ClCompile Include="finite_element_method.cpp">
       <Filter>Исходные файлы\Алгебра</Filter>
     </ClCompile>
   </ItemGroup>

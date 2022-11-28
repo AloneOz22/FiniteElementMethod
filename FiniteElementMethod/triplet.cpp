@@ -1,8 +1,8 @@
 #include "triplet.h"
 
 triplet::triplet(int i, int j, double value) {
-	this->i = j;
-	this->j = i;
+	this->i = i;
+	this->j = j;
 	this->value = value;
 }
 

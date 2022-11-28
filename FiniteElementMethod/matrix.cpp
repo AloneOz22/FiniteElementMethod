@@ -331,6 +331,7 @@ void matrix::print_transposed() {
 		}
 		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void matrix::set_value(int i, int j, double value) {

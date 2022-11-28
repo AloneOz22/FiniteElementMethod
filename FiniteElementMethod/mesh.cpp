@@ -45,7 +45,7 @@ mesh::mesh(std::string path) {
 				//tetrahedrons.push_back(elements.back());
 				break;
 			default:
-				std::cout << "Something in mesh loading is going wrong..." << std::endl;
+				//std::cout << "Something in mesh loading is going wrong..." << std::endl;
 				getline(file, helpString);
 				break;
 			}

@@ -34,7 +34,7 @@ std::vector<double> finite_element_method::local_coeficients(element& local_elem
 			result = local.inverse() * values;
 			break;
 		default:
-			std::cout << "Something in local_matrix is going wrong..." << std::endl;
+			//std::cout << "Something in local_matrix is going wrong..." << std::endl;
 			break;
 		}
 		return result;
@@ -57,14 +57,14 @@ matrix finite_element_method::form_matrix(element& local_element) {
 				{local_element.get_first_node_ptr()->get_z(), local_element.get_second_node_ptr()->get_z(), local_element.get_third_node_ptr()->get_z(),local_element.get_fourth_node_ptr()->get_z()} };
 			result = matrix(4, coordinates).transposition().inverse();
 			break;
-		case 3:
+		/*case 3:
 			coordinates = { {1,1,1},
 				{local_element.get_first_node_ptr()->get_x(), local_element.get_second_node_ptr()->get_x(), local_element.get_third_node_ptr()->get_x()},
 				{local_element.get_first_node_ptr()->get_y(), local_element.get_second_node_ptr()->get_y(), local_element.get_third_node_ptr()->get_y()} };
 			result = matrix(3, coordinates).transposition().inverse();
-			break;
+			break;*/
 		default:
-			std::cout << "Something in form_functions is going wrong..." << std::endl;
+			//std::cout << "Something in form_functions is going wrong..." << std::endl;
 			break;
 		}
 		return result;
@@ -97,7 +97,7 @@ double finite_element_method::element_characteristic(element& local_element) {
 			result = characteristic.determinant();
 			break;*/
 		default:
-			std::cout << "Something in element characteristic is going wrong..." << std::endl;
+			//std::cout << "Something in element characteristic is going wrong..." << std::endl;
 			break;
 		}
 		return result;
@@ -107,7 +107,7 @@ double finite_element_method::element_characteristic(element& local_element) {
 		return -1;
 	}
 }
-//
+
 //std::vector<double> finite_element_method::form_functions(element& local_element, double x, double y, double z) {
 //	try {
 //		matrix form = form_matrix(local_element);
@@ -151,15 +151,15 @@ matrix finite_element_method::form_gradient(element& local_element) {
 				result.set_value(i, 2, form.get_value(i, 3));
 			}
 			break;
-		case 3:
+		/*case 3:
 			result = matrix(3, 2);
 			for (int i = 0; i < 4; i++) {
 				result.set_value(i, 0, form.get_value(i, 1));
 				result.set_value(i, 1, form.get_value(i, 2));
 			}
-			break;
+			break;*/
 		default:
-			std::cout << "Something in form_gradient is going wrong...";
+			//std::cout << "Something in form_gradient is going wrong...";
 			break;
 		}
 		return result;
@@ -202,7 +202,7 @@ matrix finite_element_method::local_c_matrix(element& local_element) {
 	}
 }
 
-sparse_matrix finite_element_method::global_matrix(mesh& msh) {
+sparse_matrix_2 finite_element_method::global_matrix(mesh& msh) {
 	try {
 		std::vector<triplet> triplets = std::vector<triplet>();
 		for (element elem : msh.elements) {
@@ -216,51 +216,39 @@ sparse_matrix finite_element_method::global_matrix(mesh& msh) {
 			}
 		}
 		triplet_array arr = triplet_array(triplets);
-		arr.shrink();
-		sparse_matrix result = sparse_matrix(arr);
+		//arr.shrink();
+		sparse_matrix_2 result = sparse_matrix_2(arr, msh.nodes.size());
 		return result;
 	}
 	catch (std::exception e) {
 		std::cout << e.what() << std::endl;
-		return sparse_matrix();
+		return sparse_matrix_2();
 	}
 }
 
-std::vector<double> finite_element_method::right_part(mesh& msh, sparse_matrix& global) {
+std::vector<double> finite_element_method::right_part(mesh& msh, sparse_matrix_2& global) {
 	try {
-		std::vector<double> result = std::vector<double>(msh.nodes.size());
+		std::vector<node*> side = std::vector<node*>();
+		std::vector<double> result = std::vector<double>(global.i_ptr.size() - 1);
 		for (auto val : result) {
 			val = 0;
 		}
-		for (int i = 0; i < msh.triangles.size(); i++) {
-			result[msh.triangles[i].get_first_node_ptr()->get_num() - 1] = 1;
-			result[msh.triangles[i].get_second_node_ptr()->get_num() - 1] = 1;
-			result[msh.triangles[i].get_third_node_ptr()->get_num() - 1] = 1;
-		}
-		for (int i = 0; i < result.size(); i++) {
-			if (result[i] == 1) {
-				result[i] = global.get_value(i, i);
-				if (i != 0) {
-					for (int j = global.i_pointer[i - 1]; j < global.i_pointer[i]; j++) {
-						global.values[j] = 0;
+		for (auto triangle : msh.triangles) {
+			for (auto nd : triangle.node_list) {
+				bool is_here = false;
+				for (auto in_nd : side) {
+					if (nd == in_nd) {
+						is_here = true;
 					}
-					global.set_value(i, i, 1);
-					/*global.values.erase(global.values.begin() + global.i_pointer[i - 1], global.values.begin() + global.i_pointer[i]);
-					global.values.insert(global.values.begin() + global.i_pointer[i - 1], 1);
-					global.j_pointer.erase(global.j_pointer.begin() + global.i_pointer[i - 1], global.j_pointer.begin() + global.i_pointer[i]);
-					global.j_pointer.insert(global.j_pointer.begin() + global.i_pointer[i - 1], i);*/
 				}
-				else {
-					for (int j = 0; j < global.i_pointer[i]; j++) {
-						global.values[j] = 0;
-					}
-					global.set_value(i, i, 1);
-					/*global.values.erase(global.values.begin(), global.values.begin() + global.i_pointer[i]);
-					global.values.insert(global.values.begin(), 1);
-					global.j_pointer.erase(global.j_pointer.begin(), global.j_pointer.begin() + global.i_pointer[i]);
-					global.j_pointer.insert(global.j_pointer.begin(), i);*/
+				if (!is_here) {
+					side.push_back(nd);
 				}
 			}
+		}
+		for (int i = 0; i < side.size(); i++) {
+			int iterator = side[i]->get_num() - 1;
+			result[iterator] = global.row_to_zero(iterator);
 		}
 		return result;
 	}

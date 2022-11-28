@@ -9,7 +9,7 @@ public:
 	std::vector<int> j_pointer;
 	sparse_matrix();
 	sparse_matrix(std::vector<double>& values, std::vector<int>& i_pointer, std::vector<int>& j_pointer);
-	sparse_matrix(triplet_array& arr);
+	sparse_matrix(triplet_array& arr, int dim);
 	double get_value(int i, int j);
 	void set_value(int i, int j, double value);
 	sparse_matrix transpose();

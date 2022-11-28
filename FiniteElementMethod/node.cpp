@@ -2,7 +2,7 @@
 
 node::node(int num, double x, double y, double z) {
 	this->num = num;
-	this->value = 100;
+	this->value = x;
 	this->x = x;
 	this->y = y;
 	this->z = z;
